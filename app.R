@@ -88,6 +88,8 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
+  
+    session$setSessionTimeOut(28800)
     
     selectedPoints <- reactiveValues(ids = NULL, selectedDates = NULL)
     
