@@ -110,7 +110,7 @@ server <- function(input, output, session) {
                            layerId = ~paste(stationName,phenomenonName, sep =", ")) 
                   })
         output$submit_text <- renderText({
-          "\n Selects sites to download data and then the date range will appear date range. \n"
+          "\n Selects sites to download data and then the date range will appear. \n"
         })
     })
     
