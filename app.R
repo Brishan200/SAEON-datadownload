@@ -1,4 +1,5 @@
-##Thnaks to code by Tim Parker-Nance ansd Glenn Moncrieff (https://github.com/GMoncrieff/saeonobsr.git) 
+##Thanks to code by Tim Parker-Nance and Glenn Moncrieff 
+##(https://github.com/GMoncrieff/saeonobsr.git) 
 
 library(shiny)
 library(shinyjs)
