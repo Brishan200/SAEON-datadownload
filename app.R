@@ -1,6 +1,8 @@
 ##Thanks to code by Tim Parker-Nance and Glenn Moncrieff 
 ##(https://github.com/GMoncrieff/saeonobsr.git) 
 
+##need to fix buttons
+
 library(shiny)
 library(shinyjs)
 library(leaflet)
