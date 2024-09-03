@@ -85,12 +85,23 @@ ui <- fluidPage(
             shinyjs::hidden(downloadButton("download_csv", "Download .csv"))
         ),
         mainPanel(
+            imageOutput("figure"),
             leafletOutput("SAEON_obs_map")
             )
     )
 )
 
 server <- function(input, output, session) {
+  
+    output$figure <- renderImage({
+      list(
+        src = "app.png",
+        contentType = "image/png",
+        width = 950,    # Adjust width to fit your layout
+        height = 600,   # Adjust height to fit your layout
+        alt = "figure"
+      )
+    }, deleteFile = FALSE)
   
     selectedPoints <- reactiveValues(ids = NULL, selectedDates = NULL)
     
@@ -101,6 +112,8 @@ server <- function(input, output, session) {
         dataset <- getDatasets() %>% 
             #filter(description == "EOV - Sea Temperature - Subsurface - Actual - Degrees Celsius") %>% 
             mutate(stationName = sub(".+,(\\s*)", "", stationName))
+        
+        shinyjs::hide("figure")
         
         output$SAEON_obs_map <- renderLeaflet({
             leaflet(dataset) %>% 
@@ -223,7 +236,7 @@ server <- function(input, output, session) {
       if (format == "Rdata") {
         save(Download_data, file = file)
       } else if (format == "CSV") {
-        write.csv(Download_data, file, row.names = FALSE)
+        write.csv2(Download_data, file, row.names = FALSE)
       }
     }
     
